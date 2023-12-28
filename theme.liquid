@@ -1,0 +1,33 @@
+<script>
+if (!navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi|Tablet|iPad/i)) {
+  document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
+    summary.addEventListener('mouseenter', (event) => {
+      event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+      summary.parentElement.setAttribute('open', 'true');
+    });
+    summary.addEventListener('mouseleave', (event) => {
+      event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+      summary.parentElement.removeAttribute('open');
+    });
+    if (summary.parentElement.querySelector('.mega-menu__content')) {
+      summary.parentElement.querySelector('.mega-menu__content').addEventListener('mouseenter', (event) => {
+        event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+        summary.parentElement.setAttribute('open', 'true');
+      });
+      summary.parentElement.querySelector('.mega-menu__content').addEventListener('mouseleave', (event) => {
+        event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
+        summary.parentElement.removeAttribute('open');
+      });
+    }
+  });
+}
+</script>
+<style>
+  summary::after {
+      content: " ";
+      height: 80px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+  }
+</style>
